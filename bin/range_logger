@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+require "range_logger"
+require 'optparse'
+require 'optparse/date'
+
+options = {}
+
+OptionParser.new do |parser|
+  parser.on('-f', '--from [DATETIME]', DateTime) do |time|
+    options[:from] = time
+  end
+
+  parser.on('-t', '--to [DATETIME]', DateTime) do |time|
+    options[:to] = time
+  end
+
+  parser.on_tail("-h", "--help", "Show this message") do
+    puts parser
+    exit
+  end
+
+  parser.on_tail("-v", "--version", "Show gem version") do
+    puts RangeLogger::VERSION
+    exit
+  end
+end.parse!
+
+arguments = ARGV
+file_name = arguments[0]
+
+if File.exist?(file_name)
+  options[:file] = file_name
+
+  if options[:from] > options[:to]
+    puts "Start date should be before end date"
+  else
+    RangeLogger::LogsParser.new(options).run!
+  end
+else
+  puts "File #{file_name} does not exist"
+end
+
