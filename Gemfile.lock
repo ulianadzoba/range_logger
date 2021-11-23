@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    range_logger (1.0.0)
+    range_logger (1.1.0)
 
 GEM
   remote: https://rubygems.org/
