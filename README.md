@@ -30,8 +30,12 @@ In your Rails app directory execute `range_logger` with the next mandatory optio
 
 ### Example
 ```bash
-$ range_logger log/production.log --from '2021-10-8 8:10' --to '2022-10-12 12:30'
+$ range_logger log/production.log --from '8-10-2021 8:10' --to '10-10-221 12:30'
+$ range_logger log/production.log --from '25/10/2021' --to 'yesterday'
+$ range_logger log/production.log --from '4 days ago'
 ```
+Find more available date range options https://github.com/mojombo/chronic.
+
 Running this command will create the new log file.
 
 ## License

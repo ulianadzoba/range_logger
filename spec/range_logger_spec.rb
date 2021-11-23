@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'date'
 
 RSpec.describe RangeLogger do
-  let(:parser) { RangeLogger::LogsParser.new({file: File.open('spec/files/test.log'), from: DateTime.new(2021,10,26,17,30,0), to: DateTime.new(2021,10,28,20,12,30)}) }
+  let(:parser) { RangeLogger::LogsParser.new({file: File.open('spec/files/test.log'), from: Time.new(2021,10,26,17,30,0), to: Time.new(2021,10,28,20,12,30)}) }
 
   describe 'version number' do
     it "returns correct version number" do

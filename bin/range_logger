@@ -2,16 +2,17 @@
 require "range_logger"
 require 'optparse'
 require 'optparse/date'
+require 'chronic'
 
 options = {}
 
 OptionParser.new do |parser|
-  parser.on('-f', '--from [DATETIME]', DateTime) do |time|
-    options[:from] = time
+  parser.on('-f', '--from [String]', String) do |time|
+    options[:from] = Chronic.parse(time)
   end
 
-  parser.on('-t', '--to [DATETIME]', DateTime) do |time|
-    options[:to] = time
+  parser.on('-t', '--to [String]', String) do |time|
+    options[:to] = Chronic.parse(time)
   end
 
   parser.on_tail("-h", "--help", "Show this message") do
@@ -31,11 +32,7 @@ file_name = arguments[0]
 if File.exist?(file_name)
   options[:file] = file_name
 
-  if options[:from] > options[:to]
-    puts "Start date should be before end date"
-  else
-    RangeLogger::LogsParser.new(options).run!
-  end
+  RangeLogger::LogsParser.new(options).run!
 else
   puts "File #{file_name} does not exist"
 end
