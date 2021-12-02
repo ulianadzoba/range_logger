@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    range_logger (1.1.0)
+    range_logger (1.2.0)
+      chronic
 
 GEM
   remote: https://rubygems.org/
@@ -33,7 +34,6 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.2)
-  chronic
   pry
   rake (~> 10.0)
   range_logger!

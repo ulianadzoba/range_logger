@@ -6,7 +6,7 @@ RSpec.describe RangeLogger do
 
   describe 'version number' do
     it "returns correct version number" do
-      expect(RangeLogger::VERSION).to eq('1.1.0')
+      expect(RangeLogger::VERSION).to eq('1.2.0')
     end
   end
 
